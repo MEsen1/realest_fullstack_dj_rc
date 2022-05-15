@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     # apps
     "accounts",
     "realtors",
+    "listings",
+    "contacts",
 ]
 
 MIDDLEWARE = [
@@ -146,3 +148,17 @@ FILE_UPLOAD_PERMISSIONS = 0o640
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.UserAccount"
+
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+
+# LOGIN_URL = 'http://localhost:8000/users/login/'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = config("EMAIL")
+EMAIL_HOST_PASSWORD = config("EMAIL_PASSWORD")
+EMAIL_PORT = 587
